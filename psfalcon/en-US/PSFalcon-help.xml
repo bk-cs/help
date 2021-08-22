@@ -31028,9 +31028,6 @@ New-FalconIoc -Array $IOCs</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-FalconPreventionPolicy</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>CloneId</maml:name>
           <maml:description>
