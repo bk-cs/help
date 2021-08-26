@@ -25487,6 +25487,13 @@ Start-Process $Link.url</dev:code>
           <maml:para>Retrieve assessment results for hosts &lt;id&gt; and &lt;id&gt;.</maml:para>
         </dev:remarks>
       </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconZta</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieve a combined assessment result for your CID.</maml:para>
+        </dev:remarks>
+      </command:example>
     </command:examples>
     <command:relatedLinks />
   </command:command>
