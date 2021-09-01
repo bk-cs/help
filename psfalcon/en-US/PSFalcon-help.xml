@@ -38709,6 +38709,99 @@ Test-FalconIoaRule -Fields $Fields</dev:code>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Uninstall-FalconSensor</command:name>
+      <command:verb>Uninstall</command:verb>
+      <command:noun>FalconSensor</command:noun>
+      <maml:description>
+        <maml:para>Use Real-time Response to uninstall the Falcon sensor from a host</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Requires 'devices:write', 'sensor-update-policies:write', and 'real-time-response-admin:write'.</maml:para>
+      <maml:para>This command uses information from the registry of the target host to uninstall the Falcon sensor. If the sensor is damaged or malfunctioning, Real-time Response may not work properly and/or the uninstallation may not succeed.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Uninstall-FalconSensor</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>HostId</maml:name>
+          <maml:description>
+            <maml:para>Host identifier</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>QueueOffline</maml:name>
+          <maml:description>
+            <maml:para>Add host to the offline queue</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+          <dev:type>
+            <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>HostId</maml:name>
+        <maml:description>
+          <maml:para>Host identifier</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>QueueOffline</maml:name>
+        <maml:description>
+          <maml:para>Add host to the offline queue</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Uninstall-FalconSensor -HostId &lt;id&gt; -QueueOffline $true</dev:code>
+        <dev:remarks>
+          <maml:para>Uninstall the Falcon sensor from &lt;id&gt; and add the request to the offline queue if the host is not responding.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconHost -Filter "hostname:'EXAMPLE-PC'" | Uninstall-FalconSensor</dev:code>
+        <dev:remarks>
+          <maml:para>Uninstall the Falcon sensor from a host with the hostname 'EXAMPLE-PC'.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Update-FalconDiscoverAwsSetting</command:name>
       <command:verb>Update</command:verb>
       <command:noun>FalconDiscoverAwsSetting</command:noun>
