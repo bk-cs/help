@@ -20264,7 +20264,7 @@ Start-Process $Link.url</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Requires 'real-time-response-admin:read' and 'real-time-response-admin:write'.</maml:para>
+      <maml:para>Requires 'real-time-response:read', 'real-time-response:write' and 'real-time-response-admin:write'.</maml:para>
       <maml:para>Creates a CSV of pending Real-time Response commands and their related session information. Sessions within the offline queue expire 7 days after creation by default. Sessions can have additional commands appended to them to extend their expiration time.</maml:para>
     </maml:description>
     <command:syntax>
@@ -27083,10 +27083,10 @@ Start-Process $Link.url</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Requires 'real-time-response-admin:write'.</maml:para>
+      <maml:para>Requires 'devices:read', 'real-time-response-admin:write'.</maml:para>
       <maml:para>'Put' files will be checked for identical file names, and if any are found, the Sha256 hash values will be compared between your local and cloud files. If they are different, a prompt will appear asking which file to use.</maml:para>
       <maml:para>If the file is not present in 'Put' files, it will be uploaded.</maml:para>
-      <maml:para>Once uploaded, a Real-time Response session will be started for the designated Host(s), the file will be 'put' into the root drive, and 'run' if successfully transferred.</maml:para>
+      <maml:para>Once uploaded, a Real-time Response session will be started for the designated Host(s), 'cd' will be used to navigate to a temporary folder (\Windows\Temp or /tmp), then the file will be 'put' into that folder, and 'run' if successfully transferred. If the file already exists, it will not be executed.</maml:para>
       <maml:para>Details of each step will be output to a CSV file in the current directory.</maml:para>
     </maml:description>
     <command:syntax>
