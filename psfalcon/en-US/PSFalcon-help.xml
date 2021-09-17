@@ -380,19 +380,7 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Add-FalconSensorTag</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="device_id">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>Host identifier</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Tags</maml:name>
           <maml:description>
             <maml:para>FalconSensorTag value(s)</maml:para>
@@ -400,6 +388,18 @@
           <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
           <dev:type>
             <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="3" aliases="device_id">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>Host identifier</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -419,19 +419,7 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="device_id">
-        <maml:name>Id</maml:name>
-        <maml:description>
-          <maml:para>Host identifier</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Tags</maml:name>
         <maml:description>
           <maml:para>FalconSensorTag value(s)</maml:para>
@@ -439,6 +427,18 @@
         <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
         <dev:type>
           <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="3" aliases="device_id">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Host identifier</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -469,6 +469,13 @@
         <dev:code>Add-FalconSensorTag -Id &lt;id&gt; -Tags Example1, Example2</dev:code>
         <dev:remarks>
           <maml:para>Adds the FalconSensorTag values 'Example1' and 'Example2' to host &lt;id&gt; if not already present.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconHost -Filter "hostname:'EXAMPLE-PC'" | Add-FalconSensorTag Example1, Example2</dev:code>
+        <dev:remarks>
+          <maml:para>Adds the FalconSensorTag values 'Example1' and 'Example2' to the host named 'EXAMPLE-PC' if not already present.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -37294,19 +37301,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Remove-FalconSensorTag</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="device_id">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>Host identifier</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Tags</maml:name>
           <maml:description>
             <maml:para>FalconSensorTag value(s)</maml:para>
@@ -37314,6 +37309,18 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
           <dev:type>
             <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="3" aliases="device_id">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>Host identifier</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -37333,19 +37340,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="device_id">
-        <maml:name>Id</maml:name>
-        <maml:description>
-          <maml:para>Host identifier</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Tags</maml:name>
         <maml:description>
           <maml:para>FalconSensorTag value(s)</maml:para>
@@ -37353,6 +37348,18 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
         <dev:type>
           <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="3" aliases="device_id">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Host identifier</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -37383,6 +37390,13 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         <dev:code>Remove-FalconSensorTag -Id &lt;id&gt; -Tags Example1, Example2</dev:code>
         <dev:remarks>
           <maml:para>Removes the FalconSensorTag values 'Example1' and 'Example2' from host &lt;id&gt; if present.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconHost -Filter "hostname:'EXAMPLE-PC'" | Remove-FalconSensorTag Example1, Example2</dev:code>
+        <dev:remarks>
+          <maml:para>Removes the FalconSensorTag values 'Example1' and 'Example2' from the host named 'EXAMPLE-PC' if present.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
