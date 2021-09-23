@@ -27947,6 +27947,78 @@ Start-Process $Link.url</dev:code>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Invoke-FalconIdentityGraph</command:name>
+      <command:verb>Invoke</command:verb>
+      <command:noun>FalconIdentityGraph</command:noun>
+      <maml:description>
+        <maml:para>Interact with Falcon Identity using GraphQL</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Requires 'identity-graphql:write'.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Invoke-FalconIdentityGraph</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>Query</maml:name>
+          <maml:description>
+            <maml:para>GraphQL query statement</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>Query</maml:name>
+        <maml:description>
+          <maml:para>GraphQL query statement</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Invoke-FalconIdentityGraph -Query 'entities(roles:[BuiltinAdministratorRole] sortKey:PRIMARY_DISPLAY_NAME
+sortOrder:ASCENDING first:5) {nodes{primaryDisplayName secondaryDisplayName}}'</dev:code>
+        <dev:remarks>
+          <maml:para>Query the primary and secondary display names for the first 5 Administrator accounts, sorted in ascending order by primary display name.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Invoke-FalconIdentityGraph -Query 'entities(types:[USER] minRiskScoreSeverity:MEDIUM sortKey:
+RISK_SCORE sortOrder:DESCENDING first:10) {nodes{primaryDisplayName secondaryDisplayName isHuman:hasRole(
+type:HumanUserAccountRole) isProgrammatic:hasRole(type:ProgrammaticUserAccountRole) ... on UserEntity{
+emailAddresses} riskScore riskScoreSeverity riskFactors {type severity}}}'</dev:code>
+        <dev:remarks>
+          <maml:para>Query the top 10 users with the highest risk score and display basic information about their accounts and the risk factors contributing to their score.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Invoke-FalconIncidentAction</command:name>
       <command:verb>Invoke</command:verb>
       <command:noun>FalconIncidentAction</command:noun>
