@@ -1009,6 +1009,150 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>ConvertTo-FalconIoaExclusion</command:name>
+      <command:verb>ConvertTo</command:verb>
+      <command:noun>FalconIoaExclusion</command:noun>
+      <maml:description>
+        <maml:para>Output required fields to create an Indicator of Attack exclusion from a Falcon detection</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Uses the 'behaviors' and 'device' properties of a detection to generate the necessary fields to create a new Indicator of Attack exclusion. Specfically, it maps the following properties these fields:</maml:para>
+      <maml:para>behaviors.behavior_id  &gt; pattern_id behaviors.display_name &gt; pattern_name behaviors.cmdline      &gt; cl_regex behaviors.filepath     &gt; ifn_regex device.groups          &gt; groups</maml:para>
+      <maml:para>The 'cl_regex' and 'ifn_regex' fields are escaped using the [regex]::Escape() PowerShell accelerator. The 'ifn_regex' output also replaces the NT device path ('Device/HarddiskVolume') with a wildcard.</maml:para>
+      <maml:para>If the detection involves a device that is not in any groups, it uses 'all' to target all host groups.</maml:para>
+      <maml:para>The resulting output can be passed to 'New-FalconIoaExclusion' to create an exclusion.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-FalconIoaExclusion</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
+          <maml:name>Detection</maml:name>
+          <maml:description>
+            <maml:para>Falcon detection content, including 'behaviors' and 'device'</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
+        <maml:name>Detection</maml:name>
+        <maml:description>
+          <maml:para>Falcon detection content, including 'behaviors' and 'device'</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-FalconDetection -Filter "behaviors.display_name:'UACBypass2'" -Detailed | ConvertTo-FalconIoaExclusion</dev:code>
+        <dev:remarks>
+          <maml:para>Displays the fields that would be used to create IOA exclusion(s) for the 'UACBypass2' pattern.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconDetection -Ids &lt;id&gt; | ConvertTo-FalconIoaExclusion | New-FalconIoaExclusion -Name 'my_exclusion'</dev:code>
+        <dev:remarks>
+          <maml:para>Creates the 'my_exclusion' IOA exclusion using the contents of detection &lt;id&gt;.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>ConvertTo-FalconMlExclusion</command:name>
+      <command:verb>ConvertTo</command:verb>
+      <command:noun>FalconMlExclusion</command:noun>
+      <maml:description>
+        <maml:para>Output required fields to create a Machine Learning exclusion from a Falcon detection</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Uses the 'behaviors' and 'device' properties of a detection to generate the necessary fields to create a new Machine Learning exclusion. Specfically, it maps the following properties these fields:</maml:para>
+      <maml:para>behaviors.filepath &gt; value device.groups      &gt; groups</maml:para>
+      <maml:para>The 'value' field is stripped of any leading NT file path ('Device/HarddiskVolume').</maml:para>
+      <maml:para>If the detection involves a device that is not in any groups, it uses 'all' to target all host groups.</maml:para>
+      <maml:para>The resulting output can be passed to 'New-FalconMlExclusion' to create an exclusion.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-FalconMlExclusion</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
+          <maml:name>Detection</maml:name>
+          <maml:description>
+            <maml:para>Falcon detection content, including 'behaviors' and 'device'</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none">
+        <maml:name>Detection</maml:name>
+        <maml:description>
+          <maml:para>Falcon detection content, including 'behaviors' and 'device'</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-FalconDetection -Filter "behaviors.filename:'virus.exe'+behaviors.tactic:'Machine Learning'" -Detailed | ConvertTo-FalconMlExclusion</dev:code>
+        <dev:remarks>
+          <maml:para>Displays the fields that would be used to create ML exclusion(s) for 'Machine Learning' detections involving 'virus.exe'.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconDetection -Ids &lt;id&gt; | ConvertTo-FalconMlExclusion | New-FalconMlExclusion</dev:code>
+        <dev:remarks>
+          <maml:para>Creates an ML exclusion using the contents of detection &lt;id&gt;.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Edit-FalconCidGroup</command:name>
       <command:verb>Edit</command:verb>
       <command:noun>FalconCidGroup</command:noun>
@@ -31236,7 +31380,7 @@ New-FalconFirewallGroup -Name Example -Enabled $true -Rules $Rules</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Requires 'self-service-ioa-exclusions:write'.</maml:para>
+      <maml:para>Requires 'self-service-ioa-exclusions:write'. 'ConvertTo-FalconIoaExclusion' can be used to generate the required Indicator of Attack exclusion properties using an existing detection.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -31447,9 +31591,9 @@ New-FalconFirewallGroup -Name Example -Enabled $true -Rules $Rules</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>New-FalconIoaExclusion</dev:code>
+        <dev:code>New-FalconIoaExclusion -Name Example -PatternId 10304 -PatternName TestTriggerHigh -IfnRegex '.*\\Windows\\System32\\cmd\.exe' -ClRegex 'cmd\.exe\ \ crowdstrike_test_high' -GroupIds all</dev:code>
         <dev:remarks>
-          <maml:para>Create an exclusion and assign it to all hosts in your CID.</maml:para>
+          <maml:para>Create an Indicator of Attack exclusion named 'Example' for the pattern 'TestTriggerHigh' and assign it to all hosts in your CID.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -32297,7 +32441,7 @@ New-FalconIoc -Array $IOCs</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Requires 'ml-exclusions:write'.</maml:para>
+      <maml:para>Requires 'ml-exclusions:write'. 'ConvertTo-FalconMlExclusion' can be used to generate the required Machine Learning exclusion properties using an existing detection.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
