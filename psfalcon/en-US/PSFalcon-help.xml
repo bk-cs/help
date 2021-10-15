@@ -13758,11 +13758,11 @@ Start-Process $Link.url</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>Include</maml:name>
           <maml:description>
-            <maml:para>Include additional history with host results</maml:para>
+            <maml:para>Include additional properties</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>Array</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -13854,11 +13854,11 @@ Start-Process $Link.url</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>Include</maml:name>
           <maml:description>
-            <maml:para>Include additional history with host results</maml:para>
+            <maml:para>Include additional properties</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>Array</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -13973,11 +13973,11 @@ Start-Process $Link.url</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
         <maml:name>Include</maml:name>
         <maml:description>
-          <maml:para>Include additional history with host results</maml:para>
+          <maml:para>Include additional properties</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>Array</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -20527,6 +20527,7 @@ Start-Process $Link.url</dev:code>
     <maml:description>
       <maml:para>Requires 'real-time-response:read', 'real-time-response:write' and 'real-time-response-admin:write'.</maml:para>
       <maml:para>Creates a CSV of pending Real-time Response commands and their related session information. Sessions within the offline queue expire 7 days after creation by default. Sessions can have additional commands appended to them to extend their expiration time.</maml:para>
+      <maml:para>Additional host information can be appended to the results using the 'Include' parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -20543,6 +20544,18 @@ Start-Process $Link.url</dev:code>
           </dev:type>
           <dev:defaultValue>0</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Include</maml:name>
+          <maml:description>
+            <maml:para>Include additional properties</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -20558,6 +20571,18 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>0</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>Include</maml:name>
+        <maml:description>
+          <maml:para>Include additional properties</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+        <dev:type>
+          <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes />
     <command:returnValues />
@@ -20572,6 +20597,13 @@ Start-Process $Link.url</dev:code>
         <dev:code>Get-FalconQueue -Days 14</dev:code>
         <dev:remarks>
           <maml:para>Output pending Real-time Response sessions in the offline queue that were created within the last 14 days. Any sessions that expired at the end of the default 7 day period will not be displayed.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconQueue -Include cid, hostname</dev:code>
+        <dev:remarks>
+          <maml:para>Output pending Real-time Response sessions in the offline queue that were created within the last 7 days, and include 'cid' and 'hostname' with each command result. Any sessions that expired at the end of the default 7 day period will not be displayed.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -25762,6 +25794,7 @@ Start-Process $Link.url</dev:code>
     </command:details>
     <maml:description>
       <maml:para>Requires 'usermgmt:read'.</maml:para>
+      <maml:para>User roles can be appended to the results using the 'Include' parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -25770,6 +25803,18 @@ Start-Process $Link.url</dev:code>
           <maml:name>Ids</maml:name>
           <maml:description>
             <maml:para>User identifier(s)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Include</maml:name>
+          <maml:description>
+            <maml:para>Include additional properties</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
           <dev:type>
@@ -25793,6 +25838,18 @@ Start-Process $Link.url</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Include</maml:name>
+          <maml:description>
+            <maml:para>Include additional properties</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Detailed</maml:name>
           <maml:description>
@@ -25807,6 +25864,18 @@ Start-Process $Link.url</dev:code>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-FalconUser</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Include</maml:name>
+          <maml:description>
+            <maml:para>Include additional properties</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Detailed</maml:name>
           <maml:description>
@@ -25837,6 +25906,18 @@ Start-Process $Link.url</dev:code>
         <maml:name>Usernames</maml:name>
         <maml:description>
           <maml:para>Username(s)</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+        <dev:type>
+          <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>Include</maml:name>
+        <maml:description>
+          <maml:para>Include additional properties</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
         <dev:type>
@@ -27926,6 +28007,18 @@ Start-Process $Link.url</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Include</maml:name>
+          <maml:description>
+            <maml:para>Include additional properties</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -27953,6 +28046,18 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>Include</maml:name>
+        <maml:description>
+          <maml:para>Include additional properties</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+        <dev:type>
+          <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes />
     <command:returnValues />
@@ -27964,9 +28069,9 @@ Start-Process $Link.url</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Invoke-FalconHostAction -Name contain -Ids &lt;id&gt;, &lt;id&gt;</dev:code>
+        <dev:code>Invoke-FalconHostAction -Name contain -Ids &lt;id&gt;, &lt;id&gt; -Include hostname</dev:code>
         <dev:remarks>
-          <maml:para>Send a network containment request for hosts &lt;id&gt; and &lt;id&gt;.</maml:para>
+          <maml:para>Send a network containment request for hosts &lt;id&gt; and &lt;id&gt; and include the 'hostname' field within the output.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
