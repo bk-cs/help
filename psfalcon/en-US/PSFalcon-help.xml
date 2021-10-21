@@ -26466,7 +26466,7 @@ Start-Process $Link.url</dev:code>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-FalconVulnerability</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
           <maml:name>Filter</maml:name>
           <maml:description>
             <maml:para>Falcon Query Language expression to limit results</maml:para>
@@ -26478,7 +26478,7 @@ Start-Process $Link.url</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
           <maml:name>Limit</maml:name>
           <maml:description>
             <maml:para>Maximum number of results per request</maml:para>
@@ -26490,7 +26490,7 @@ Start-Process $Link.url</dev:code>
           </dev:type>
           <dev:defaultValue>0</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>Sort</maml:name>
           <maml:description>
             <maml:para>Property and direction to sort results</maml:para>
@@ -26502,7 +26502,7 @@ Start-Process $Link.url</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="7" aliases="none">
           <maml:name>After</maml:name>
           <maml:description>
             <maml:para>Pagination token to retrieve the next set of results</maml:para>
@@ -26513,17 +26513,6 @@ Start-Process $Link.url</dev:code>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Detailed</maml:name>
-          <maml:description>
-            <maml:para>Retrieve detailed information</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>All</maml:name>
@@ -26548,6 +26537,91 @@ Start-Process $Link.url</dev:code>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-FalconVulnerability</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>Falcon Query Language expression to limit results</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Facet</maml:name>
+          <maml:description>
+            <maml:para>Include additional properties</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>Limit</maml:name>
+          <maml:description>
+            <maml:para>Maximum number of results per request</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>0</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+          <maml:name>Sort</maml:name>
+          <maml:description>
+            <maml:para>Property and direction to sort results</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="7" aliases="none">
+          <maml:name>After</maml:name>
+          <maml:description>
+            <maml:para>Pagination token to retrieve the next set of results</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Detailed</maml:name>
+          <maml:description>
+            <maml:para>Retrieve detailed information</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>All</maml:name>
+          <maml:description>
+            <maml:para>Repeat requests until all available results are retrieved</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
@@ -26562,7 +26636,7 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
         <maml:name>Filter</maml:name>
         <maml:description>
           <maml:para>Falcon Query Language expression to limit results</maml:para>
@@ -26574,7 +26648,19 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>Facet</maml:name>
+        <maml:description>
+          <maml:para>Include additional properties</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
         <maml:name>Limit</maml:name>
         <maml:description>
           <maml:para>Maximum number of results per request</maml:para>
@@ -26586,7 +26672,7 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>0</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
         <maml:name>Sort</maml:name>
         <maml:description>
           <maml:para>Property and direction to sort results</maml:para>
@@ -26598,7 +26684,7 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="7" aliases="none">
         <maml:name>After</maml:name>
         <maml:description>
           <maml:para>Pagination token to retrieve the next set of results</maml:para>
@@ -26610,7 +26696,7 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Detailed</maml:name>
         <maml:description>
           <maml:para>Retrieve detailed information</maml:para>
@@ -26657,13 +26743,20 @@ Start-Process $Link.url</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Get-FalconVulnerability -Filter "created_timestamp:&gt;'last 7 days'" -Detailed -All</dev:code>
+        <dev:code>Get-FalconVulnerability -Filter "created_timestamp:&gt;'last 7 days'" -All</dev:code>
         <dev:remarks>
-          <maml:para>Return detailed information about all vulnerabilities opened within the last 7 days.</maml:para>
+          <maml:para>Return identifiers for all vulnerabilities opened within the last 7 days.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconVulnerability -Filter "created_timestamp:&gt;'last 14 days'" -Detailed -Facet cve, host_info, remediation -All</dev:code>
+        <dev:remarks>
+          <maml:para>Return detailed information (including 'cve', 'host_info', and 'remediation') about all vulnerabilities opened within the last 14 days.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
         <dev:code>Get-FalconVulnerability -Ids &lt;id&gt;, &lt;id&gt;</dev:code>
         <dev:remarks>
           <maml:para>List detailed information about vulnerabilities &lt;id&gt; and &lt;id&gt;.</maml:para>
