@@ -370,12 +370,12 @@
       <command:verb>Add</command:verb>
       <command:noun>FalconSensorTag</command:noun>
       <maml:description>
-        <maml:para>Use Real-time Response to add FalconSensorTag(s) to a host</maml:para>
+        <maml:para>Use Real-time Response to add FalconSensorTags to hosts</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
       <maml:para>Requires 'real-time-response-admin:write'.</maml:para>
-      <maml:para>Provided FalconSensorTag values will be appended to any existing values.</maml:para>
+      <maml:para>Provided FalconSensorTag values will be appended to any existing tags.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -400,6 +400,45 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>QueueOffline</maml:name>
+          <maml:description>
+            <maml:para>Add command request to the offline queue</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+          <dev:type>
+            <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Add-FalconSensorTag</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>Tags</maml:name>
+          <maml:description>
+            <maml:para>FalconSensorTag value(s)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Ids</maml:name>
+          <maml:description>
+            <maml:para>Host identifiers</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -443,6 +482,18 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>Ids</maml:name>
+        <maml:description>
+          <maml:para>Host identifiers</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+        <dev:type>
+          <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>QueueOffline</maml:name>
         <maml:description>
@@ -473,9 +524,9 @@
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Get-FalconHost -Filter "hostname:'EXAMPLE-PC'" | Add-FalconSensorTag Example1, Example2</dev:code>
+        <dev:code>Add-FalconSensorTag -Ids (Get-FalconHost -Filter "platform_name:'Linux'") -Tags Example1, Example2</dev:code>
         <dev:remarks>
-          <maml:para>Adds the FalconSensorTag values 'Example1' and 'Example2' to the host named 'EXAMPLE-PC' if not already present.</maml:para>
+          <maml:para>Adds the FalconSensorTag values 'Example1' and 'Example2' to hosts using Linux.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -24152,11 +24203,11 @@ Start-Process $Link.url</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>FalconSensorTag</command:noun>
       <maml:description>
-        <maml:para>Use Real-time Response to display FalconSensorTags assigned to a host</maml:para>
+        <maml:para>Use Real-time Response to display FalconSensorTags assigned to hosts</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Requires 'real-time-response:read'.</maml:para>
+      <maml:para>Requires 'real-time-response-admin:write'.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -24169,6 +24220,33 @@ Start-Process $Link.url</dev:code>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>QueueOffline</maml:name>
+          <maml:description>
+            <maml:para>Add command request to the offline queue</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+          <dev:type>
+            <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-FalconSensorTag</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Ids</maml:name>
+          <maml:description>
+            <maml:para>Host identifiers</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -24200,6 +24278,18 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>Ids</maml:name>
+        <maml:description>
+          <maml:para>Host identifiers</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+        <dev:type>
+          <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>QueueOffline</maml:name>
         <maml:description>
@@ -24226,6 +24316,13 @@ Start-Process $Link.url</dev:code>
         <dev:code>Get-FalconSensorTag -Id &lt;id&gt;</dev:code>
         <dev:remarks>
           <maml:para>Display the FalconSensorTag value(s) assigned to host &lt;id&gt;.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconSensorTag -Ids (Get-FalconHost -Filter "platform_name:'Windows'")</dev:code>
+        <dev:remarks>
+          <maml:para>Display the FalconSensorTags assigned to Windows hosts.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -29684,6 +29781,57 @@ emailAddresses} riskScore riskScoreSeverity riskFactors {type severity}}}'</dev:
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>QueueOffline</maml:name>
+          <maml:description>
+            <maml:para>Add non-responsive Hosts to the offline queue</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+          <dev:type>
+            <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="device_id">
+          <maml:name>HostId</maml:name>
+          <maml:description>
+            <maml:para>Host identifier</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-FalconRtr</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>Command</maml:name>
+          <maml:description>
+            <maml:para>Real-time Response command</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Arguments</maml:name>
+          <maml:description>
+            <maml:para>Arguments to include with the command</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
           <maml:name>Timeout</maml:name>
           <maml:description>
@@ -29833,6 +29981,18 @@ emailAddresses} riskScore riskScoreSeverity riskFactors {type severity}}}'</dev:
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="device_id">
+        <maml:name>HostId</maml:name>
+        <maml:description>
+          <maml:para>Host identifier</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>HostIds</maml:name>
@@ -37705,12 +37865,12 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
       <command:verb>Remove</command:verb>
       <command:noun>FalconSensorTag</command:noun>
       <maml:description>
-        <maml:para>Use Real-time Response to remove FalconSensorTag(s) from a host</maml:para>
+        <maml:para>Use Real-time Response to remove FalconSensorTags from hosts</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
       <maml:para>Requires 'real-time-response-admin:write'.</maml:para>
-      <maml:para>Provided FalconSensorTag values will be removed from existing values and others will be left unmodified.</maml:para>
+      <maml:para>Provided FalconSensorTag values will be removed from existing tags and others will be left unmodified.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -37735,6 +37895,45 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>QueueOffline</maml:name>
+          <maml:description>
+            <maml:para>Add command request to the offline queue</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+          <dev:type>
+            <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-FalconSensorTag</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>Tags</maml:name>
+          <maml:description>
+            <maml:para>FalconSensorTag value(s)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Ids</maml:name>
+          <maml:description>
+            <maml:para>Host identifiers</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <dev:type>
+            <maml:name>Array</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -37778,6 +37977,18 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>Ids</maml:name>
+        <maml:description>
+          <maml:para>Host identifiers</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+        <dev:type>
+          <maml:name>Array</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>QueueOffline</maml:name>
         <maml:description>
@@ -37808,9 +38019,9 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Get-FalconHost -Filter "hostname:'EXAMPLE-PC'" | Remove-FalconSensorTag Example1, Example2</dev:code>
+        <dev:code>Remove-FalconSensorTag -Ids (Get-FalconHost -Filter "platform_name:'Mac'") -Tags Example1, Example2</dev:code>
         <dev:remarks>
-          <maml:para>Removes the FalconSensorTag values 'Example1' and 'Example2' from the host named 'EXAMPLE-PC' if present.</maml:para>
+          <maml:para>Adds the FalconSensorTag values 'Example1' and 'Example2' to hosts using MacOS.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
