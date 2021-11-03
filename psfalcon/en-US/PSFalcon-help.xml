@@ -18722,11 +18722,11 @@ Start-Process $Link.url</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Ids</maml:name>
           <maml:description>
-            <maml:para>Request identifier(s)</maml:para>
+            <maml:para>Request identifier</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>Array</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -18737,11 +18737,11 @@ Start-Process $Link.url</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Ids</maml:name>
         <maml:description>
-          <maml:para>Request identifier(s)</maml:para>
+          <maml:para>Request identifier</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>Array</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -18757,9 +18757,9 @@ Start-Process $Link.url</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Get-FalconMalQuery -Ids &lt;id&gt;, &lt;id&gt;</dev:code>
+        <dev:code>Get-FalconMalQuery -Id &lt;id&gt;</dev:code>
         <dev:remarks>
-          <maml:para>Return detailed status for requests &lt;id&gt; and &lt;id&gt;.</maml:para>
+          <maml:para>Return detailed status for request &lt;id&gt;.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -28724,17 +28724,6 @@ emailAddresses} riskScore riskScoreSeverity riskFactors {type severity}}}'</dev:
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Detailed</maml:name>
-          <maml:description>
-            <maml:para>Retrieve detailed information</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Invoke-FalconMalQuery</maml:name>
@@ -28846,17 +28835,6 @@ emailAddresses} riskScore riskScoreSeverity riskFactors {type severity}}}'</dev:
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Detailed</maml:name>
-          <maml:description>
-            <maml:para>Retrieve detailed information</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Invoke-FalconMalQuery</maml:name>
@@ -28912,17 +28890,6 @@ emailAddresses} riskScore riskScoreSeverity riskFactors {type severity}}}'</dev:
           <maml:name>Fuzzy</maml:name>
           <maml:description>
             <maml:para>Search MalQuery quickly but with more potential for false positives</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Detailed</maml:name>
-          <maml:description>
-            <maml:para>Retrieve detailed information</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -29057,18 +29024,6 @@ emailAddresses} riskScore riskScoreSeverity riskFactors {type severity}}}'</dev:
         <maml:name>Fuzzy</maml:name>
         <maml:description>
           <maml:para>Search MalQuery quickly but with more potential for false positives</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>Detailed</maml:name>
-        <maml:description>
-          <maml:para>Retrieve detailed information</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
