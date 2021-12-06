@@ -13979,6 +13979,42 @@ Start-Process $Link.url</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>AwsAccountId</maml:name>
+          <maml:description>
+            <maml:para>AWS account identifier</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>AzureSubscriptionId</maml:name>
+          <maml:description>
+            <maml:para>Azure subscription identifier</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>AzureTenantId</maml:name>
+          <maml:description>
+            <maml:para>Azure tenant identifier</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>Severity</maml:name>
           <maml:description>
@@ -14018,7 +14054,7 @@ Start-Process $Link.url</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="9" aliases="none">
           <maml:name>State</maml:name>
           <maml:description>
-            <maml:para>Indicator of Attack status</maml:para>
+            <maml:para>Indicator of Attack state</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -14048,45 +14084,6 @@ Start-Process $Link.url</dev:code>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-FalconHorizonIoa</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
-          <maml:name>AwsAccountId</maml:name>
-          <maml:description>
-            <maml:para>AWS account identifier</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
-          <maml:name>AzureSubscriptionId</maml:name>
-          <maml:description>
-            <maml:para>Azure subscription identifier</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
-          <maml:name>AzureTenantId</maml:name>
-          <maml:description>
-            <maml:para>Azure tenant identifier</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -14178,7 +14175,7 @@ Start-Process $Link.url</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="9" aliases="none">
         <maml:name>State</maml:name>
         <maml:description>
-          <maml:para>Indicator of Attack status</maml:para>
+          <maml:para>Indicator of Attack state</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -14740,7 +14737,7 @@ Start-Process $Link.url</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
           <maml:name>Status</maml:name>
           <maml:description>
-            <maml:para>{{ Fill Status Description }}</maml:para>
+            <maml:para>Indicator of Misconfiguration status</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -14764,7 +14761,7 @@ Start-Process $Link.url</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="8" aliases="none">
           <maml:name>Severity</maml:name>
           <maml:description>
-            <maml:para>Indicator of Attack severity</maml:para>
+            <maml:para>Indicator of Misconfiguration severity</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -14861,7 +14858,7 @@ Start-Process $Link.url</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
         <maml:name>Status</maml:name>
         <maml:description>
-          <maml:para>{{ Fill Status Description }}</maml:para>
+          <maml:para>Indicator of Misconfiguration status</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -14885,7 +14882,7 @@ Start-Process $Link.url</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="8" aliases="none">
         <maml:name>Severity</maml:name>
         <maml:description>
-          <maml:para>Indicator of Attack severity</maml:para>
+          <maml:para>Indicator of Misconfiguration severity</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
