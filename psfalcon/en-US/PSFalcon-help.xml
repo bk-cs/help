@@ -38799,19 +38799,19 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Register-HumioEventCollector</command:name>
+      <command:name>Register-FalconEventCollector</command:name>
       <command:verb>Register</command:verb>
-      <command:noun>HumioEventCollector</command:noun>
+      <command:noun>FalconEventCollector</command:noun>
       <maml:description>
-        <maml:para>Define Humio ingestion endpoint and token for logging PSFalcon events</maml:para>
+        <maml:para>Define Humio ingestion endpoint and token for logging</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>Once configured, the Humio destination can be used by PSFalcon, but the module will not send events to Humio until 'Enable' options are chosen. 'Remove-FalconEventCollector' can be used to remove a configured destination and stop the transmission of events.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Register-HumioEventCollector</maml:name>
+        <maml:name>Register-FalconEventCollector</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="humio_path">
           <maml:name>Path</maml:name>
           <maml:description>
@@ -38828,6 +38828,18 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           <maml:name>Token</maml:name>
           <maml:description>
             <maml:para>Humio ingestion token</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="enabled">
+          <maml:name>Enabled</maml:name>
+          <maml:description>
+            <maml:para>Events to send to the event collector</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -38855,6 +38867,18 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         <maml:name>Token</maml:name>
         <maml:description>
           <maml:para>Humio ingestion token</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="enabled">
+        <maml:name>Enabled</maml:name>
+        <maml:description>
+          <maml:para>Events to send to the event collector</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -38900,9 +38924,9 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>Register-HumioEventCollector -Path 'https://cloud.community.humio.com:443/api/v1/ingest/hec/raw' -Token &lt;token&gt;</dev:code>
+        <dev:code>Register-FalconEventCollector -Path 'https://cloud.community.humio.com:443/api/v1/ingest/humio-structured' -Token &lt;token&gt; -Enable responses, library</dev:code>
         <dev:remarks>
-          <maml:para>Configure PSFalcon to send events to Humio, using the ingestion token &lt;token&gt;.</maml:para>
+          <maml:para>Cache the Humio Community structured event collector endpoint with ingestion token &lt;token&gt; and send both API responses and Real-time Response library script results.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -41728,60 +41752,6 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-HumioEventCollector</command:name>
-      <command:verb>Remove</command:verb>
-      <command:noun>HumioEventCollector</command:noun>
-      <maml:description>
-        <maml:para>Remove an existing Humio ingestion endpoint and token</maml:para>
-      </maml:description>
-    </command:details>
-    <maml:description>
-      <maml:para></maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Remove-HumioEventCollector</maml:name>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters />
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>System.Object</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>Remove-HumioEventCollector</dev:code>
-        <dev:remarks>
-          <maml:para>Remove your existing Humio ingestion endpoint and token and stop logging PSFalcon events.</maml:para>
-        </dev:remarks>
-      </command:example>
-    </command:examples>
-    <command:relatedLinks />
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
       <command:name>Request-FalconToken</command:name>
       <command:verb>Request</command:verb>
       <command:noun>FalconToken</command:noun>
@@ -41790,13 +41760,15 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Requests an OAuth2 access token. If successful, your credentials ('ClientId', 'ClientSecret', 'MemberCid' and 'Cloud'/'Hostname') and token are cached for re-use.</maml:para>
-      <maml:para>If an active OAuth2 access token is due to expire in less than 15 seconds, a new token will automatically be requested using your cached credentials.</maml:para>
+      <maml:para>Requests an OAuth2 access token.</maml:para>
+      <maml:para>If successful, your credentials ('ClientId', 'ClientSecret', 'MemberCid' and 'Cloud'/'Hostname') and token are cached for re-use.</maml:para>
+      <maml:para>If an active OAuth2 access token is due to expire in less than 60 seconds, a new token will automatically be requested using your cached credentials.</maml:para>
+      <maml:para>The 'Collector' parameter allows for the submission of a [System.Collections.Hashtable] object containing the parameters included with a 'Register-FalconEventCollector' command ('Path', 'Token' and 'Enabled') in order to log an initial OAuth2 access token request.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Request-FalconToken</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="client_id">
           <maml:name>ClientId</maml:name>
           <maml:description>
             <maml:para>OAuth2 client identifier</maml:para>
@@ -41808,7 +41780,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="client_secret">
           <maml:name>ClientSecret</maml:name>
           <maml:description>
             <maml:para>OAuth2 client secret</maml:para>
@@ -41832,7 +41804,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="cid, member_cid">
           <maml:name>MemberCid</maml:name>
           <maml:description>
             <maml:para>Member CID, used when authenticating within a multi-CID environment ('Falcon Flight Control')</maml:para>
@@ -41844,10 +41816,22 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none">
+          <maml:name>Collector</maml:name>
+          <maml:description>
+            <maml:para>A hashtable containing 'Path', 'Token' and 'Enabled' properties for 'Register-FalconEventCollector'</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Request-FalconToken</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="client_id">
           <maml:name>ClientId</maml:name>
           <maml:description>
             <maml:para>OAuth2 client identifier</maml:para>
@@ -41859,7 +41843,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="client_secret">
           <maml:name>ClientSecret</maml:name>
           <maml:description>
             <maml:para>OAuth2 client secret</maml:para>
@@ -41883,7 +41867,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="cid, member_cid">
           <maml:name>MemberCid</maml:name>
           <maml:description>
             <maml:para>Member CID, used when authenticating within a multi-CID environment ('Falcon Flight Control')</maml:para>
@@ -41895,10 +41879,22 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none">
+          <maml:name>Collector</maml:name>
+          <maml:description>
+            <maml:para>A hashtable containing 'Path', 'Token' and 'Enabled' properties for 'Register-FalconEventCollector'</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="client_id">
         <maml:name>ClientId</maml:name>
         <maml:description>
           <maml:para>OAuth2 client identifier</maml:para>
@@ -41910,7 +41906,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="client_secret">
         <maml:name>ClientSecret</maml:name>
         <maml:description>
           <maml:para>OAuth2 client secret</maml:para>
@@ -41946,7 +41942,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="cid, member_cid">
         <maml:name>MemberCid</maml:name>
         <maml:description>
           <maml:para>Member CID, used when authenticating within a multi-CID environment ('Falcon Flight Control')</maml:para>
@@ -41954,6 +41950,18 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none">
+        <maml:name>Collector</maml:name>
+        <maml:description>
+          <maml:para>A hashtable containing 'Path', 'Token' and 'Enabled' properties for 'Register-FalconEventCollector'</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -41969,7 +41977,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Request-FalconToken -ClientId &lt;string&gt; -ClientSecret &lt;string&gt; -Cloud 'us-1'</dev:code>
+        <dev:code>Request-FalconToken -ClientId &lt;string&gt; -ClientSecret &lt;string&gt; -Cloud us-1</dev:code>
         <dev:remarks>
           <maml:para>Authenticate with the 'us-1' cloud using the provided 'ClientId' and 'ClientSecret' values.</maml:para>
         </dev:remarks>
@@ -41978,7 +41986,14 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>Request-FalconToken -ClientId &lt;string&gt; -ClientSecret &lt;string&gt; -Hostname 'https://api.us-2.crowdstrike.com' -MemberCid &lt;string&gt;</dev:code>
         <dev:remarks>
-          <maml:para>Authenticate with 'MemberCid' in the 'us-2' cloud using the provided 'ClientId' and 'ClientSecret' values.</maml:para>
+          <maml:para>Authenticate with the 'us-2' cloud using the provided 'ClientId', 'ClientSecret' and 'MemberCid' values.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Request-FalconToken -ClientId &lt;string&gt; -ClientSecret &lt;string&gt; -Collector @{ Path = &lt;string&gt;; Token = &lt;string&gt;; Enabled = 'library','responses','requests' }</dev:code>
+        <dev:remarks>
+          <maml:para>Authenticate with the 'us-1' cloud using the provided 'ClientId' and 'ClientSecret' values, and set a Humio structured event logging destination with the logging types 'library', 'responses', and 'requests' enabled.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -43196,6 +43211,60 @@ Send-FalconWebhook -Type Slack -Path https://hooks.slack.com/... -Object $HostIn
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Show-FalconEventCollector</command:name>
+      <command:verb>Show</command:verb>
+      <command:noun>FalconEventCollector</command:noun>
+      <maml:description>
+        <maml:para>Display existing Humio ingestion endpoint and token</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Show-FalconEventCollector</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Show-FalconEventCollector</dev:code>
+        <dev:remarks>
+          <maml:para>Display your active Humio ingestion endpoint, token and logging options.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Show-FalconMap</command:name>
       <command:verb>Show</command:verb>
       <command:noun>FalconMap</command:noun>
@@ -43287,60 +43356,6 @@ Send-FalconWebhook -Type Slack -Path https://hooks.slack.com/... -Object $HostIn
         <dev:code>Show-FalconModule</dev:code>
         <dev:remarks>
           <maml:para>Display PSFalcon module information.</maml:para>
-        </dev:remarks>
-      </command:example>
-    </command:examples>
-    <command:relatedLinks />
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Show-HumioEventCollector</command:name>
-      <command:verb>Show</command:verb>
-      <command:noun>HumioEventCollector</command:noun>
-      <maml:description>
-        <maml:para>Display existing Humio ingestion endpoint and token</maml:para>
-      </maml:description>
-    </command:details>
-    <maml:description>
-      <maml:para></maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Show-HumioEventCollector</maml:name>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters />
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>System.Object</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>Show-HumioEventCollector</dev:code>
-        <dev:remarks>
-          <maml:para>Display your active Humio ingestion endpoint and token.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -43766,6 +43781,60 @@ Test-FalconIoaRule -Fields $Fields</dev:code>
         <dev:code>Get-FalconHost -Filter "hostname:'EXAMPLE-PC'" | Uninstall-FalconSensor</dev:code>
         <dev:remarks>
           <maml:para>Uninstall the Falcon sensor from a host with the hostname 'EXAMPLE-PC'.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Unregister-FalconEventCollector</command:name>
+      <command:verb>Unregister</command:verb>
+      <command:noun>FalconEventCollector</command:noun>
+      <maml:description>
+        <maml:para>Remove an existing Humio ingestion endpoint and token</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Unregister-FalconEventCollector</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Unregister-FalconEventCollector</dev:code>
+        <dev:remarks>
+          <maml:para>Remove your existing Humio ingestion endpoint and token and stop logging PSFalcon events.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
