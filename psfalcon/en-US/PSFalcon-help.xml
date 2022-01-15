@@ -38807,7 +38807,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Once configured, the Humio destination can be used by PSFalcon, but the module will not send events to Humio until 'Enable' options are chosen. 'Remove-FalconEventCollector' can be used to remove a configured destination and stop the transmission of events.</maml:para>
+      <maml:para>Once configured, the Humio destination can be used by PSFalcon but the module will not send events to Humio until 'Enable' options are chosen. 'Remove-FalconEventCollector' can be used to remove a configured destination and stop the transmission of events.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -38837,9 +38837,9 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="enabled">
-          <maml:name>Enabled</maml:name>
+          <maml:name>Enable</maml:name>
           <maml:description>
-            <maml:para>Events to send to the event collector</maml:para>
+            <maml:para>Define events to send to the collector</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -38876,9 +38876,9 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="enabled">
-        <maml:name>Enabled</maml:name>
+        <maml:name>Enable</maml:name>
         <maml:description>
-          <maml:para>Events to send to the event collector</maml:para>
+          <maml:para>Define events to send to the collector</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
