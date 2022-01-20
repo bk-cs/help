@@ -21236,11 +21236,11 @@ Start-Process $Link.url</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>FalconLibrary</command:noun>
       <maml:description>
-        <maml:para>List available Real-time Response Library scripts</maml:para>
+        <maml:para>List available Real-time Response Library scripts, or help information for a specific script</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>{{ Fill in the Description }}</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -21249,6 +21249,18 @@ Start-Process $Link.url</dev:code>
           <maml:name>Platform</maml:name>
           <maml:description>
             <maml:para>Operating system platform</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Script name</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -21272,6 +21284,18 @@ Start-Process $Link.url</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Script name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes />
     <command:returnValues />
@@ -21286,6 +21310,13 @@ Start-Process $Link.url</dev:code>
         <dev:code>Get-FalconScript -Platform windows</dev:code>
         <dev:remarks>
           <maml:para>List scripts from the Windows library.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-FalconScript -Platform windows -Name get_application.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Show help content for the Windows 'get_application' script.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -43787,7 +43818,7 @@ Test-FalconIoaRule -Fields $Fields</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Requires 'devices:write', 'sensor-update-policies:write', and 'real-time-response-admin:write'.</maml:para>
+      <maml:para>Requires 'devices:read', 'sensor-update-policies:write', and 'real-time-response-admin:write'.</maml:para>
       <maml:para>This command uses information from the registry of the target host to uninstall the Falcon sensor. If the sensor is damaged or malfunctioning, Real-time Response may not work properly and/or the uninstallation may not succeed.</maml:para>
     </maml:description>
     <command:syntax>
