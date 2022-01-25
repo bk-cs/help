@@ -21240,7 +21240,7 @@ Start-Process $Link.url</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para></maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -38843,10 +38843,10 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Register-FalconEventCollector</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="humio_path">
-          <maml:name>Path</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+          <maml:name>Uri</maml:name>
           <maml:description>
-            <maml:para>Humio ingestion endpoint</maml:para>
+            <maml:para>Humio cloud</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
           <dev:type>
@@ -38855,7 +38855,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="humio_token">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>Token</maml:name>
           <maml:description>
             <maml:para>Humio ingestion token</maml:para>
@@ -38882,10 +38882,10 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="humio_path">
-        <maml:name>Path</maml:name>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+        <maml:name>Uri</maml:name>
         <maml:description>
-          <maml:para>Humio ingestion endpoint</maml:para>
+          <maml:para>Humio cloud</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
         <dev:type>
@@ -38894,7 +38894,7 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="humio_token">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
         <maml:name>Token</maml:name>
         <maml:description>
           <maml:para>Humio ingestion token</maml:para>
@@ -38955,9 +38955,9 @@ $Confirm | Where-Object { $_.sha256 -and $_.created_at -and $_.session_id } | Fo
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>Register-FalconEventCollector -Path 'https://cloud.community.humio.com:443/api/v1/ingest/humio-structured' -Token &lt;token&gt; -Enable responses, library</dev:code>
+        <dev:code>Register-FalconEventCollector -Uri 'https://cloud.community.humio.com/' -Token &lt;token&gt; -Enable responses, library</dev:code>
         <dev:remarks>
-          <maml:para>Cache the Humio Community structured event collector endpoint with ingestion token &lt;token&gt; and send both API responses and Real-time Response library script results.</maml:para>
+          <maml:para>Cache your Humio cloud with ingestion token &lt;token&gt; and send both API responses and Real-time Response library script results.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
